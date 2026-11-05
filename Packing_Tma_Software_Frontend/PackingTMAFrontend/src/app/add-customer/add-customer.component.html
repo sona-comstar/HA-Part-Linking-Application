@@ -1,0 +1,82 @@
+<p-toast position="top-center"></p-toast>
+
+<div class="card">
+  <h2>Part Number Scanning System For HA0101</h2>
+  <div class="today-count">
+    <i class="pi pi-check-circle"></i> Today's scanned count: {{ todayCount }}
+  </div>
+  
+  <div *ngIf="timeLeft > 0" class="auto-save-message">
+    <i class="pi pi-clock"></i> Auto-saving in {{ timeLeft }} second{{ timeLeft !== 1 ? 's' : '' }}...
+  </div>
+
+  <div class="scan-progress">
+    <!-- Progress steps remain the same -->
+  </div>
+
+  <div class="input-grid">
+    <!-- HA01S2 Input -->
+    <div class="input-group">
+      <label for="ha01s2">
+        <i class="pi pi-barcode"></i> HA01S2 ({{ prefix1 }}!)
+      </label>
+      <input type="text" id="ha01s2" class="part-input"
+      [(ngModel)]="partNumbers.ha01s2"
+      (input)="onInput('ha01s2')"
+      (keydown.enter)="onEnter('ha01s2')"
+      [disabled]="checkingDuplicates || isSubmitting"
+      [maxlength]="totalLength"
+      [class.invalid]="partNumbers.ha01s2 && !isFirstValid()"
+      [class.valid]="partNumbers.ha01s2 && isFirstValid()"
+      placeholder="Scan HA01S2"
+      autofocus>
+
+<small *ngIf="partNumbers.ha01s2 && !isFirstValid()" class="error-message">
+ Invalid format or duplicate
+</small>
+
+
+    <!-- HA01S3 Input -->
+    <div class="input-group">
+      <label for="ha01s3">
+        <i class="pi pi-barcode"></i> HA01S3 ({{ prefix2 }})
+      </label>
+      <input type="text" id="ha01s3" class="part-input"
+             [(ngModel)]="partNumbers.ha01s3"
+             (input)="onInput('ha01s3')"
+             (keydown.enter)="onEnter('ha01s3')"
+             [disabled]="!enableSecond || checkingDuplicates || isSubmitting"
+             [maxlength]="totalLength"
+             [class.invalid]="partNumbers.ha01s3 && !isSecondValid()"
+             [class.valid]="partNumbers.ha01s3 && isSecondValid()"
+             placeholder="Scan HA01S3">
+      <small *ngIf="partNumbers.ha01s3 && !isSecondValid()" class="error-message">
+        Invalid format or duplicate
+      </small>
+    </div>
+
+    <!-- HA0101 Input -->
+    <div class="input-group">
+      <label for="ha0101">
+        <i class="pi pi-barcode"></i> HA0101 ({{ prefix3 }})
+      </label>
+      <input type="text" id="ha0101" class="part-input"
+             [(ngModel)]="partNumbers.ha0101"
+             (input)="onInput('ha0101')"
+             (keydown.enter)="onEnter('ha0101')"
+             [disabled]="!enableThird || checkingDuplicates || isSubmitting"
+             [maxlength]="totalLength"
+             [class.invalid]="partNumbers.ha0101 && !isThirdValid()"
+             [class.valid]="partNumbers.ha0101 && isThirdValid()"
+             placeholder="Scan HA0101">
+      <small *ngIf="partNumbers.ha0101 && !isThirdValid()" class="error-message">
+        Invalid format or duplicate
+      </small>
+    </div>
+  </div>
+
+  <div *ngIf="checkingDuplicates" class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p>Validating part number...</p>
+  </div>
+</div>

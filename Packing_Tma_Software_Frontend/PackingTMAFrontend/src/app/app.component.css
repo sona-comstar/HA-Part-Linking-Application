@@ -1,0 +1,107 @@
+/* Ensure the entire page uses Flexbox layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header styles */
+  .fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1A0000;
+    color: #fff;
+    padding: 10px 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  .center-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+  }
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between; /* Spreads elements: logo left, menu right */
+    align-items: center;
+    width: 100%;
+  }
+  
+  nav ul li {
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 15px;
+    font-size: 18px; /* Increase text size */
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    background-color: #393737;
+    color: #fff;
+  }
+  #logo {
+    margin-right: auto; /* Push everything else to the right */
+  }
+  
+  #logo img {
+    width: 80px;
+    height: auto;
+  }
+  /* Main content area */
+  .content-container {
+    flex: 1; /* Allow the container to grow and fill available space */
+    margin-top: 20px; /* Adjust for header height */
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 80px); /* Ensures it fills the remaining space excluding header and footer */
+    box-sizing: border-box; /* Include padding in height calculation */
+  }
+  
+  /* Footer Styling */
+  .footer {
+    background-color: #1A0000;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 50px; /* Pushes the footer to the bottom */
+  }
+  
+  /* Optional: Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .fixed-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    nav ul li {
+      margin: 10px 0;
+    }
+  }
+  

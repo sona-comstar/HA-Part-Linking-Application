@@ -1,0 +1,80 @@
+# ==============================
+# ENVIRONMENT / SECRETS
+# ==============================
+
+.env
+.env.*
+!.env.example
+
+# Secret/config files
+secrets/
+secret/
+credentials/
+
+# ==============================
+# LOG FILES
+# ==============================
+
+*.log
+logs/
+log/
+
+# ==============================
+# NODE / ANGULAR
+# ==============================
+
+node_modules/
+dist/
+.angular/
+.cache/
+.npm/
+
+# ==============================
+# JAVA / SPRING BOOT
+# ==============================
+
+target/
+.classpath
+.project
+.settings/
+*.class
+
+# ==============================
+# IDE
+# ==============================
+
+.vscode/
+.idea/
+*.iml
+
+# ==============================
+# OS / TEMP FILES
+# ==============================
+
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.bak
+
+# ==============================
+# SERVICE FOLDERS - IGNORE ANYWHERE
+# ==============================
+
+**/service/
+**/services/
+
+# ==============================
+# SECRET CONFIG FILES
+# ==============================
+
+application-local.properties
+application-secret.properties
+application-local.yml
+application-secret.yml
+
+# ==============================
+# LOCAL CONFIG
+# ==============================
+
+config/

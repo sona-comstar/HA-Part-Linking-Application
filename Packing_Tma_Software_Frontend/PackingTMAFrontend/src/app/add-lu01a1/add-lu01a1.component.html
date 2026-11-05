@@ -1,0 +1,43 @@
+<p-toast position="top-center"></p-toast>
+
+<div class="card">
+  <h2>Part Number Scanning System For LU0101</h2>
+  <div class="today-count">
+    <i class="pi pi-check-circle"></i> Today's scanned count: {{ todayCount }}
+  </div>
+  
+  <div *ngIf="timeLeft > 0" class="auto-save-message">
+    <i class="pi pi-clock"></i> Auto-saving in {{ timeLeft }} second{{ timeLeft !== 1 ? 's' : '' }}...
+  </div>
+
+  <div class="scan-progress">
+    <!-- Progress steps remain the same -->
+  </div>
+
+  <div class="input-grid">
+    <!-- HA01S2 Input -->
+    <div class="input-group">
+      <label for="lu0101">
+        <i class="pi pi-qrcode"></i> LU0101 ({{ prefix1 }}!)
+      </label>
+      <input type="text" id="lu0101" class="part-input"
+      [(ngModel)]="partNumbers.lu0101"
+      (input)="onInput('lu0101')"
+      (keydown.enter)="onEnter('lu0101')"
+      [disabled]="checkingDuplicates || isSubmitting"
+      [maxlength]="totalLength"
+      [class.invalid]="partNumbers.lu0101 && !isFirstValid()"
+      [class.valid]="partNumbers.lu0101 && isFirstValid()"
+      placeholder="Scan LU0101"
+      autofocus>
+
+<small *ngIf="partNumbers.lu0101 && !isFirstValid()" class="error-message">
+ Invalid format or duplicate
+</small>
+
+
+  <div *ngIf="checkingDuplicates" class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <p>Validating part number...</p>
+  </div>
+</div>
